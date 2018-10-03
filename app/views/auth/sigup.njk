@@ -2,12 +2,16 @@
 
 {% block body %}
   <div class="auth-wrapper">
-    <h1>Docfy</h1>
-    <form action="/authenticate" method="POST">
+    <h1>Criar conta</h1>
+    <form action="/register" method="POST">
+
+      <input name="name" type="text" placeholder="Digite seu nome"/>
       <input type="email" name="email" placeholder="Digite seu e-mail">
       <input type="password" name="password" placeholder="Digite sua senha">
-      <button type="submit">Entrar</button>
-      <a href="/sigup">Criar minha conta</a>
+
+      <button type="submit">Criar minha conta</button>
+
+      <a href="/">Já tenho conta</a>
     </form>
   </div>
 {% endblock %}

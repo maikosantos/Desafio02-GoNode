@@ -7,9 +7,12 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
 
-// const sessionConfig = require('./config/session');
+const sessionConfig = require('./config/session');
 
 const app = express();
+
+// const { User } = require('./app/models');
+// User.create({ name: 'Maiko', email: 'maikossmaster@gmail.com', password: '123456' });
 
 app.use(express.static(path.resolve('app', 'public')));
 
@@ -20,7 +23,7 @@ nunjucks.configure(path.resolve('app', 'views'), {
 
 app.set('view engine', 'njk');
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(session(sessionConfig));
+app.use(session(sessionConfig));
 app.use(flash());
 app.use(methodOverride('_method'));
 

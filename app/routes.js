@@ -2,7 +2,11 @@ const express = require('express');
 
 const routes = express.Router();
 
+const authMiddlewares = require('./middlewares/auth');
+const guestMiddlewares = require('./middlewares/guest');
+
 const authController = require('./controllers/authController');
+const dashboardController = require('./controllers/dashboardController');
 
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
@@ -13,10 +17,17 @@ routes.use((req, res, next) => {
 /**
  * Auth
  */
-routes.get('/', authController.sigin);
-routes.get('/sigup', authController.sigup);
+routes.get('/', guestMiddlewares, authController.sigin);
+routes.get('/sigup', guestMiddlewares, authController.sigup);
+routes.get('/sigout', authController.sigout);
 routes.post('/register', authController.register);
 routes.post('/authenticate', authController.authenticate);
+
+/**
+ * Dashboard
+ */
+routes.use('/app', authMiddlewares);
+routes.get('/app/dashboard', dashboardController.index);
 
 routes.use((req, res) => res.render('errors/404'));
 

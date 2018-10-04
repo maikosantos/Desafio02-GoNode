@@ -55,4 +55,10 @@ module.exports = {
       return next(error);
     }
   },
+
+  sigout(req, res) {
+    return req.session.destroy(() => {
+      res.redirect('/');
+    });
+  },
 };

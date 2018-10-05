@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      CategoryId: {
+      ProjectId: {
         type: DataTypes.INTEGER,
         references: { model: 'Projects', key: 'id' },
         onUpdate: 'CASCADE',

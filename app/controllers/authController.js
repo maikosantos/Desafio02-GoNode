@@ -18,12 +18,12 @@ module.exports = {
 
       if (!user) {
         req.flash('error', 'Usuário inexistente.');
-        return res.redirect('back');
+        return req.session.save(() => res.redirect('back'));
       }
 
       if (!(await bcrypt.compare(password, user.password))) {
         req.flash('error', 'Senha incorreta.');
-        return res.redirect('back');
+        return req.session.save(() => res.redirect('back'));
       }
 
       req.session.user = user;
@@ -42,7 +42,7 @@ module.exports = {
 
       if (await User.findOne({ where: { email } })) {
         req.flash('error', 'E-mail já cadastrado.');
-        return res.redirect('back');
+        return req.session.save(() => res.redirect('back'));
       }
 
       const password = await bcrypt.hash(req.body.password, 5);

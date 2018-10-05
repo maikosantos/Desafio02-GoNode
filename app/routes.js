@@ -7,6 +7,7 @@ const guestMiddlewares = require('./middlewares/guest');
 
 const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
+const projectController = require('./controllers/projectController');
 
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
@@ -28,6 +29,12 @@ routes.post('/authenticate', authController.authenticate);
  */
 routes.use('/app', authMiddlewares);
 routes.get('/app/dashboard', dashboardController.index);
+
+/**
+ * Project
+ */
+routes.get('/app/projects/:id', projectController.show);
+routes.post('/app/projects/create', projectController.store);
 
 routes.use((req, res) => res.render('errors/404'));
 

@@ -176,6 +176,7 @@ textarea:focus {
 
 .wrapper #header .user-info a {
   margin-left: 15px;
+  padding-top: 12px;
 }
 
 .wrapper section#main {

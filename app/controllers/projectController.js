@@ -18,21 +18,24 @@ module.exports = {
 
   async show(req, res, next) {
     try {
+      const ProjectId = req.params.id;
+
+      // console.log(`ID = ${req.params.id}`);
+
       const projects = await Project.findAll({
-        include: [SessionsProject],
         where: {
-          UserId: req.session.user.id,
+          id: ProjectId,
         },
       });
 
       const sessions = await SessionsProject.findAll({
-        where: { ProjectId: req.params.id },
+        where: { ProjectId },
       });
 
       return res.render('projects/show', {
         projects,
         sessions,
-        activeProject: req.params.id,
+        activeProject: ProjectId,
       });
     } catch (error) {
       return next(error);

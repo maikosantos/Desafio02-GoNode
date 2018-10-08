@@ -1,7 +1,12 @@
 <section id="main">
   <div class="container">
     <header>
-      <h2>{{ projects.title }}</h2>
+      <h2>
+      {% for project in projects %}
+        {{ project.title }}
+      {% endfor %}
+
+      </h2>
       <div class="addon">
         <a href="" class="btn btn-danger">Excluir projeto</a>
       </div>

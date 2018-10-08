@@ -12,6 +12,7 @@ const projectController = require('./controllers/projectController');
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
   res.locals.flashError = req.flash('error');
+  res.locals.user = req.session.user;
   next();
 });
 

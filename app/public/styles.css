@@ -156,6 +156,12 @@ textarea:focus {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  text-decoration: none;
+}
+
+.wrapper #header .logo {
+  text-decoration: none;
+  color: #fff;
 }
 
 .wrapper #header .user-info {

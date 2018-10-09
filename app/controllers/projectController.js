@@ -20,8 +20,6 @@ module.exports = {
     try {
       const ProjectId = req.params.id;
 
-      // console.log(`ID = ${req.params.id}`);
-
       const projects = await Project.findAll({
         where: {
           id: ProjectId,

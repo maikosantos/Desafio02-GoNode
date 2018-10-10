@@ -39,7 +39,7 @@ module.exports = {
 
       // console.log(session);
 
-      res.render('sessions/show', {
+      res.render('projects/show', {
         activeProject: projectId,
         projects,
         sessions,

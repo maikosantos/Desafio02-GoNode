@@ -18,7 +18,8 @@
       <nav>
         <div class="sessions">
           {% for session in sessions %}
-            <a href="/app/projects/{{ activeProject }}/sessionsProject/{{ session.id }}">
+            <a href="/app/projects/{{ activeProject }}/sessionsProject/{{ session.id }}"
+               class="{% if currentSession.id == session.id %}active{% endif %}">
               {{ session.title }}
             </a>
           {% endfor %}

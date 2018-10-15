@@ -1,0 +1,26 @@
+{% extends 'layouts/default.njk' %}
+
+{% block body %}
+
+<div class="wrapper">
+{% include 'partials/header.njk' %}
+
+    <section id="main">
+      <div class="container">
+        <section id="content">
+
+          <article>
+            <form action="/app/projects/{{activeProject}}/sessionsProject/{{currentSession.id}}?_method=PUT" method="POST">
+              <input type="text" name="title" value="{{currentSession.title}}">
+              <textarea class="mde" id="content" name="content">{{currentSession.content}}</textarea>
+              <button type="submit" class="btn">Salvar</button>
+            </form>
+          </article>
+
+        </section>
+      </div>
+    </section>
+
+</div>
+
+{% endblock %}

@@ -8,7 +8,9 @@
 
       </h2>
       <div class="addon">
-        <a href="" class="btn btn-danger">Excluir projeto</a>
+      <form action="/app/projects/{{activeProject}}?_method=DELETE" method="post">
+        <button type="submit" class="btn btn-danger">Excluir projeto</button>
+      </form>
       </div>
     </header>
 

@@ -37,12 +37,16 @@ routes.get('/app/dashboard', dashboardController.index);
  */
 routes.get('/app/projects/:id', projectController.show);
 routes.post('/app/projects/create', projectController.store);
+routes.delete('/app/projects/:id', projectController.destroy);
 
 /**
  * Sessions Project
  */
 routes.get('/app/projects/:projectId/sessionsProject/:id', sessionController.show);
 routes.post('/app/projects/:projectId/sessionsProject/create', sessionController.store);
+routes.get('/app/projects/:projectId/sessionsProject/edit/:id', sessionController.edit);
+routes.put('/app/projects/:projectId/sessionsProject/:id', sessionController.update);
+routes.delete('/app/projects/:projectId/sessionsProject/:id', sessionController.destroy);
 
 routes.use((req, res) => res.render('errors/404'));
 

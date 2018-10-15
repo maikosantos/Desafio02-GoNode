@@ -10,16 +10,13 @@
 
               <article>
                   <div class="project-header">
-                    <h1>
-                      {% for session in currentSession %}
-                        {{ session.title }}
-                      {% endfor %}
-                    </h1>
-                    <a href="">Remover seção</a>
+                    <h1> {{ currentSession.title }}</h1>
+                    <a href="/app/projects/{{activeProject}}/sessionsProject/edit/{{currentSession.id}}" class="edit">Editar seção</a>
+                    <form action="/app/projects/{{activeProject}}/sessionsProject/{{currentSession.id}}?_method=DELETE" method="post">
+                      <button type="submit" class="delete">Remover seção</button>
+                    </form>
                   </div>
-                  {% for session in currentSession %}
-                  <p>{{ session.content }}</p>
-                  {% endfor %}
+                  {{ currentSession.formatedContent | safe }}
               </article>
 
         </section>
